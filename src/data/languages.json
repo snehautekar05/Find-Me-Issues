@@ -21,6 +21,7 @@
     "Matlab",
     "Objective C",
     "PHP",
+    "Powershell",
     "Python",
     "R",
     "Ruby",
@@ -40,11 +41,21 @@
     "Crystal",
     "SAS",
     "Scala",
+    "Smalltalk",
     "Shell",
     "SQL",
     "Swift",
     "TypeScript",
     "Vue.js",
-    "FORTRAN"
+    "FORTRAN",
+    "Erlang",
+    "Zig",
+    "PureScript",
+    "Forth",
+    "Ada",
+    "Xojo",
+    "Idris",
+    "Hack",
+    "ReasonML"
   ]
 }
