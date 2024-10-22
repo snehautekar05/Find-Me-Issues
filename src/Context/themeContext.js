@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useMemo } from "react";
 
 // Create ThemeContext
 export const ThemeContext = createContext();
@@ -17,19 +17,20 @@ const getInitialTheme = () => {
 
 // ThemeProvider component
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(getInitialTheme);
+  const [theme, setTheme] = useState(getInitialTheme());
 
   // Handle theme change
   const changeTheme = () => {
     const newTheme = theme.mode === "light" ? dark : light;
     setTheme(newTheme);
-    localStorage.setItem('themeMode', JSON.stringify(newTheme)); // Save theme to local storage
-  }
+    localStorage.setItem("theme", JSON.stringify(newTheme)); // Save theme to local storage
+  };
 
-  // Effect to apply the theme to the document body (if needed)
+  // Effect to apply the theme to the document body
   useEffect(() => {
     document.body.style.backgroundColor = theme.bg;
     document.body.style.color = theme.color;
+    localStorage.setItem("theme", JSON.stringify(theme)); // Save theme on change
   }, [theme]);
 
   // Memoize context value to avoid unnecessary re-renders
