@@ -1,27 +1,3 @@
-// import { createContext, useState } from "react";
-
-// export const ThemeContext = createContext()
-
-// //Theme modes 
-// const light = {mode: 'light', color: 'black', bg: 'white'}
-// const dark = {mode: 'dark', color: 'white', bg: '#020300'}
-
-// //Get the system theme
-// let systemTheme = {}
-// window.matchMedia('(prefers-color-scheme: dark)').matches ? systemTheme = dark : systemTheme = light
-
-// export function ThemeProvider(props) {
-//     const [theme, setTheme] = useState(systemTheme)
-
-//     //Handle theme change
-//     function changeTheme() {
-//         theme.mode === 'light' ? setTheme(dark) : setTheme(light)
-//     }
-
-//     return <ThemeContext.Provider value={{theme: theme, changeTheme: changeTheme}}>
-//         {props.children}
-//     </ThemeContext.Provider>
-// }
 import { createContext, useState, useEffect } from "react";
 
 // Create ThemeContext
@@ -49,10 +25,10 @@ export function ThemeProvider(props) {
   function changeTheme() {
     const newTheme = theme.mode === 'light' ? dark : light;
     setTheme(newTheme);
-    localStorage.setItem('themeMode', JSON.stringify(newTheme)); // Save theme to local storage
+    localStorage.setItem('themeMode', JSON.stringify(newTheme));
   }
 
-  // Effect to apply the theme to the document body (if needed)
+  
   useEffect(() => {
     document.body.style.backgroundColor = theme.bg;
     document.body.style.color = theme.color;
